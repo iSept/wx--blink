@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -12,9 +12,9 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.3",
+	"libVersion": "2.0.4",
 	"appid": "wx193a5a8bf2e55ef7",
-	"projectname": "wx-blink",
+	"projectname": "Blink",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

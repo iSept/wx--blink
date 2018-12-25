@@ -1,0 +1,3 @@
+<!--pages/classic/classic.wxml-->
+<!-- 数据三种来源：wxml、js、服务器 -->
+<v-link></v-link>
