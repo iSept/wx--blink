@@ -3,7 +3,7 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {
+  properties: { // 属性数据
     like: {
       type: Boolean,
       value: false,
@@ -19,7 +19,7 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: { // 数据绑定
+  data: { // 内部数据（数据绑定）
     yesSrc: 'images/like.png',
     noSrc: 'images/like@dis.png'
   },

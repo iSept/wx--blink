@@ -1,3 +1,6 @@
-<!--pages/classic/classic.wxml-->
+<!-- pages/classic/classic.wxml -->
 <!-- 数据三种来源：wxml、js、服务器 -->
-<v-link></v-link>
+<view>
+  <v-like like="{{classic.like_status}}" count="{{classic.fav_nums}}"></v-like>
+  <v-movie img="{{classic.image}}" content="{{classic.content}}" />
+</view>

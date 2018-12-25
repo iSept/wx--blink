@@ -1,8 +1,8 @@
 // pages/classic/classic.js
 
-import { HTTP } from '../../utils/http.js'; // 重要：只能使用相对路径
+import { ClassicModel } from '../../models/classic.js'; // 重要：只能使用相对路径
 
-let http = new HTTP();
+let classic = new ClassicModel();
 
 Page({
 
@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    classic: null, // 也可以省略声明
     test: 1
   },
 
@@ -18,12 +19,17 @@ Page({
    */
   onLoad: function (options) {
     console.log(this.data.test);
-    http.request({
-      url: 'classic/latest',
-      success: res => {
-        console.log(res);
-      }
-    })
+    classic.getLatest(res => {
+      this.setData({ // 更新数据必须使用setData方法
+        classic: res // data中可不必声明wxml可直接使用
+      })
+    });
+    // http.request({
+    //   url: 'classic/latest',
+    //   success: res => {
+    //     console.log(res);
+    //   }
+    // })
     // wx.request({
     //   url: 'http://bl.7yue.pro/v1/classic/latest',
     //   header: {
