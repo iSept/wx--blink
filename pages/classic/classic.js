@@ -14,7 +14,9 @@ Page({
    * 2、对一个组件来说，wxml里面使用的变量除了data还有properties;
    */
   data: {
-    classic: null // 也可以省略声明
+    classic: null, // 也可以省略声明
+    latest: true, // 最新一期期刊(当前期刊)
+    first: false // 第一期期刊
   },
 
   /**
@@ -36,6 +38,13 @@ Page({
     likeModel.like(behavior, id, type);
   },
 
+  onNext(event) {
+    console.log(event);
+  },
+
+  onPrevious(event) {
+    console.log(event);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
