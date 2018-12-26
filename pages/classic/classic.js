@@ -10,6 +10,8 @@ Page({
 
   /**
    * 页面的初始数据
+   * 1、对一个page页面来说，wxml里面所用的所有变量都是有data所决定的；
+   * 2、对一个组件来说，wxml里面使用的变量除了data还有properties;
    */
   data: {
     classic: null // 也可以省略声明
@@ -20,6 +22,7 @@ Page({
    */
   onLoad: function (options) {
     classicModel.getLatest(res => {
+      // 数据更新
       this.setData({ // 更新数据必须使用setData方法
         classic: res // data中可不必声明wxml可直接使用
       })
@@ -37,7 +40,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
