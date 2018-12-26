@@ -1,8 +1,10 @@
 // pages/classic/classic.js
 
 import { ClassicModel } from '../../models/classic.js'; // 重要：只能使用相对路径
+import { LikeModel } from '../../models/like.js'; // 重要：只能使用相对路径
 
-let classic = new ClassicModel();
+let classicModel = new ClassicModel();
+let likeModel = new LikeModel();
 
 Page({
 
@@ -10,20 +12,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classic: null, // 也可以省略声明
-    test: 1
+    classic: null // 也可以省略声明
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.test);
-    classic.getLatest(res => {
+    classicModel.getLatest(res => {
       this.setData({ // 更新数据必须使用setData方法
         classic: res // data中可不必声明wxml可直接使用
       })
     });
+  },
+
+  onLike(event) { // 点赞
+    // console.log(event);
+    let behavior = event.detail.behavior;
+    let { id, type } = this.data.classic;
+    likeModel.like(behavior, id, type);
   },
 
   /**

@@ -1,6 +1,6 @@
 <!-- pages/classic/classic.wxml -->
 <!-- 数据三种来源：wxml、js、服务器 -->
 <view>
-  <v-like like="{{classic.like_status}}" count="{{classic.fav_nums}}"></v-like>
+  <v-like bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"></v-like>
   <v-movie img="{{classic.image}}" content="{{classic.content}}" />
 </view>
