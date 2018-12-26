@@ -1,4 +1,4 @@
-import { config, tips } from '../config.js';
+import { config, tips } from '../config/index.js';
 
 class HTTP {
   request(params) {
