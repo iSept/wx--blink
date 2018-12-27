@@ -32,7 +32,7 @@ Component({
   },
 
   // 组件生命周期函数，在组件实例进入页面节点树时执行
-  attached() {
+  attached: function() {
     // console.log(this.properties); // propertiex和data数据一致。小程序将两者合并了
     let date = new Date();
     let year = date.getFullYear();

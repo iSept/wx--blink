@@ -1,11 +1,16 @@
 // components/classic/essay/index.js
+import { classicBeh } from '../classic-beh.js';
+
 Component({
   /**
    * 组件的属性列表
    */
-  properties: {
-    img: String,
-    content: String
+  // behaviors 是用于组件间代码共享的特性，类似于一些编程语言中的“mixins”或“traits”。
+  behaviors: [classicBeh],
+
+  properties: { // 组件间公用的数据放到了behavior中了
+    // img: String,
+    // content: String
   },
 
   /**

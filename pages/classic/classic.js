@@ -28,6 +28,7 @@ Page({
       this.setData({ // 更新数据必须使用setData方法
         classic: res // data中可不必声明wxml可直接使用
       })
+      // 获取期刊号：latestClassic: latestIndex , currentClassic: currentIndex
     });
   },
 
@@ -44,7 +45,17 @@ Page({
 
   onPrevious(event) {
     console.log(event);
+    let index = this.data.classic.index;
+    classicModel.getPrevious(index, res => {
+      // console.log(JSON.stringify(res));
+      this.setData({ // 更新当前页面classic数据
+        classic: res,
+        latest: classicModel.isLatest(res.index),
+        first: classicModel.isFirst(res.index)
+      })
+    })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
