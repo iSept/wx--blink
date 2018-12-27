@@ -39,14 +39,30 @@ Page({
     likeModel.like(behavior, id, type);
   },
 
-  onNext(event) {
-    console.log(event);
+  // onPrevious: function(event) { // 获取前一期期刊(获取后一期期刊类似)
+  //   console.log(event);
+  //   let index = this.data.classic.index;
+  //   classicModel.getPrevious(index, res => {
+  //     // console.log(JSON.stringify(res));
+  //     this.setData({ // 更新当前页面classic数据
+  //       classic: res,
+  //       latest: classicModel.isLatest(res.index),
+  //       first: classicModel.isFirst(res.index)
+  //     })
+  //   })
+  // },
+
+  onPrevious: function(event) {
+    this._updateClassic('previous');
   },
 
-  onPrevious(event) {
-    console.log(event);
-    let index = this.data.classic.index;
-    classicModel.getPrevious(index, res => {
+  onNext: function(event) {
+    this._updateClassic('next');
+  },
+
+  _updateClassic: function(nextOrPrevious) { // 获取前一期和后一期期刊
+    let index = this.data.classic.index; // 当前期刊的期刊号(序号)
+    classicModel.getClassic(index, nextOrPrevious, res => {
       // console.log(JSON.stringify(res));
       this.setData({ // 更新当前页面classic数据
         classic: res,

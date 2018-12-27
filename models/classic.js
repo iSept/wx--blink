@@ -13,10 +13,29 @@ class ClassicModel extends HTTP {
     });
   }
 
-  getPrevious(index, sCallback) {
-    apis.mock ? index >= 2 && sCallback(mock.classic.getPrevious[index-2]) : // 启动mock数据
+  // getPrevious(index, sCallback) { // 获取前一期期刊
+  //   apis.mock ? index >= 2 && sCallback(mock.classic.getPrevious[index-2]) : // 启动mock数据
+  //   this.request({
+  //     url: apis.getPrevious.replace(/<index>/, index),
+  //     success: res =>{
+  //       sCallback(res);
+  //     }
+  //   })
+  // }
+
+  getClassic(index, nextOrPrevious, sCallback) {
+    let apiurl = null;
+    let mockCallback = null;
+    if (nextOrPrevious === 'previous') { // 获取前一期期刊
+      apiurl = apis.getPrevious;
+      mockCallback = index >= 2 && sCallback(mock.classic.getClassics[index-2]);
+    } else { // 获取后一期期刊
+      apiurl = apis.getNext;
+      mockCallback = index < 8 && sCallback(mock.classic.getClassics[index]);
+    }
+    apis.mock ? mockCallback : // 启动mock数据
     this.request({
-      url: apis.getPrevious.replace(/<index>/, index),
+      url: apiurl.replace(/<index>/, index),
       success: res =>{
         sCallback(res);
       }
@@ -28,7 +47,7 @@ class ClassicModel extends HTTP {
   }
 
   isLatest(index) { // 判断当前期刊是否是最新一期(最后一期), 根据最新一期期刊数据可获得期刊号index
-    let latestIndex = this._getLatestIndex(); // 从缓存中读取最新一期期刊号
+    let latestIndex = this._getLatestIndex() || 8; // 从缓存中读取最新一期期刊号, 8为mock数据最后一期期刊号
     return index === latestIndex ? true : false;
   }
 

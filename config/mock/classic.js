@@ -10,7 +10,7 @@ const classic = {
     title: "李安《饮食男女 》",
     type: 100
   },
-  getPrevious: [
+  getClassics: [
     {
       content: "岁月长，衣裳薄",
       fav_nums: 104,
@@ -91,6 +91,17 @@ const classic = {
       title: "不才 《参商》",
       type: 200,
       url: "http://music.163.com/song/media/outer/url?id=29719651.mp3"
+    },
+    {
+      content: "人生不能像做菜，把所有的料准备好才下锅",
+      fav_nums: 363,
+      id: 1,
+      image: "http://bl.7yue.pro/images/movie.8.png",
+      index: 8,
+      like_status: 1,
+      pubdate: "2018-06-22",
+      title: "李安《饮食男女 》",
+      type: 100
     }
   ]
 };
