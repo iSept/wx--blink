@@ -9,6 +9,7 @@ const apis = {
   getNext: 'classic/<index>/next', // 期刊：获取当前一期的下一期
   like: 'like', // 点赞: 进行点赞
   likeCancel: 'like/cancel', // 点赞: 取消点赞
+  likeStatus: 'classic/<type>/<id>/favor' // 获取点赞信息
 }
 
 export { apis, mock };

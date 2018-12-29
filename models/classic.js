@@ -34,20 +34,19 @@ class ClassicModel extends HTTP {
     // 缓存key， 确定key => 定义一个私有方法_getKey
     let apiurl = null;
     let currKey = null;
-    let mockCallback = null;
     if (nextOrPrevious === 'previous') { // 获取前一期期刊
       apiurl = apis.getPrevious;
       currKey = this._getKey(index - 1);
-      mockCallback = index >= 2 && sCallback(mock.classic.getClassics[index-2]);
     } else { // 获取后一期期刊
       apiurl = apis.getNext;
       currKey = this._getKey(index + 1);
-      mockCallback = index < 8 && sCallback(mock.classic.getClassics[index]);
     }
     // let classic = wx.getStorageSync(currKey); // 单条读取缓存
     let classic = wx.getStorageSync(this.classicKey)[currKey]; // 对象形式多条对应读取缓存
-    if (apis.mock) { // 启动mock数据}
-      mockCallback
+    if (apis.mock) { // 启动mock数据
+      nextOrPrevious === 'previous' ?
+      index >= 2 && sCallback(mock.classic.getClassics[index-2]) :
+      index < 8 && sCallback(mock.classic.getClassics[index]);
     } else {
       if (!classic) { // 无缓存，写入请求数据到缓存
         this.request({

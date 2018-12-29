@@ -16,7 +16,9 @@ Page({
   data: {
     classic: null, // 也可以省略声明
     latest: true, // 最新一期期刊(当前期刊)
-    first: false // 第一期期刊
+    first: false, // 第一期期刊
+    likeCount: 0, // 当前期刊点赞数量
+    likeStatus: false, // 当前期刊点赞状态
   },
 
   /**
@@ -26,7 +28,9 @@ Page({
     classicModel.getLatest(res => {
       // 数据更新
       this.setData({ // 更新数据必须使用setData方法
-        classic: res // data中可不必声明wxml可直接使用
+        classic: res, // data中可不必声明wxml可直接使用
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
       // 获取期刊号：latestClassic: latestIndex , currentClassic: currentIndex
     });
@@ -63,11 +67,21 @@ Page({
   _updateClassic: function(nextOrPrevious) { // 获取前一期和后一期期刊
     let index = this.data.classic.index; // 当前期刊的期刊号(序号)
     classicModel.getClassic(index, nextOrPrevious, res => {
-      // console.log(JSON.stringify(res));
+      this._getLikeStatus(res.id, res.type); // 更新当前期刊点赞信息
       this.setData({ // 更新当前页面classic数据
         classic: res,
         latest: classicModel.isLatest(res.index),
         first: classicModel.isFirst(res.index)
+      })
+    })
+  },
+
+  /* 获取点赞信息 */
+  _getLikeStatus: function(artID, category) {
+    likeModel.getClassicLikeStatus(artID, category, res => {
+      this.setData({
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
