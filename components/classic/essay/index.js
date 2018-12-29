@@ -10,7 +10,8 @@ Component({
 
   properties: { // 组件间公用的数据放到了behavior中了
     // img: String,
-    // content: String
+    // content: String,
+    hidden: Boolean // 兼容hidden在自定义组件的使用
   },
 
   /**

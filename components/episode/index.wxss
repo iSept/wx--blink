@@ -1,4 +1,4 @@
-/* components/epsoide/index.wxss */
+/* components/episode/index.wxss */
 /* 组件里面要使用class选择器，不能使用id选择器 */
 .container {
   display: inline-flex;

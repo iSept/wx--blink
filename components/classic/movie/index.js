@@ -13,7 +13,8 @@ Component({
   // 2、生命周期方法不会被覆盖，会依次执行behavior中方法，最后执行组件内的生命周期方法
   properties: {
     // img: String,
-    // content: String
+    // content: String,
+    hidden: Boolean // 兼容hidden在自定义组件的使用
   },
 
   /**
